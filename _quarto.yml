@@ -10,10 +10,18 @@ website:
         href: https://github.com/terezalacerda
       - icon: twitter
         href: https://twitter.com/tereza_lacerda
+  page-footer:
+    left: "Blog feito com [Quarto](https://quarto.org/)"
+    right:
+      - icon: github
+        href: https://github.com/terezalacerda
+      - icon: twitter
+        href: https://twitter.com/tereza_lacerda
 format:
   html:
     theme: minty
     css: styles.css
+    monobackgroundcolor: "#fcb3b3"
 
 editor: visual
 
