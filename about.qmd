@@ -1,5 +1,5 @@
 ---
-title: "Sobre"
+title: "Tereza Lacerda"
 image: profile.jpg
 about:
   template: jolla
