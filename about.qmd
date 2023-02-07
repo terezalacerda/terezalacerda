@@ -1,19 +1,18 @@
 ---
-title: "About"
+title: "Sobre"
 image: profile.jpg
 about:
   template: jolla
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com
+      href: https://twitter.com/tereza_lacerda
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/terezalacerda/
     - icon: github
       text: Github
-      href: https://github.com
-
+      href: https://github.com/terezalacerda
 ---
 
 About this blog
