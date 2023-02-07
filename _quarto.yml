@@ -21,7 +21,6 @@ format:
   html:
     theme: minty
     css: styles.css
-    monobackgroundcolor: "#fcb3b3"
 
 editor: visual
 

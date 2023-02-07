@@ -10,5 +10,8 @@
   },
   "posts/welcome/index.qmd": {
     "index.html": "38abe5dd"
+  },
+  "posts/2022-06-28-rspotify/index.qmd": {
+    "index.html": "dd85c342"
   }
 }

@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -137,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Spotify">Spotify <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Tutoriais">Tutoriais <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -149,78 +149,40 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1675652400000" data-listing-file-modified-sort="1675723972339" data-listing-reading-time-sort="0.045">
+<div class="quarto-post image-right" data-index="0" data-categories="Tutoriais,Spotify" data-listing-date-sort="1656385200000" data-listing-file-modified-sort="1675740104102" data-listing-reading-time-sort="6.51">
 <div class="thumbnail">
-<p><a href="./posts/post-with-code/index.html"> <img src="./posts/post-with-code/image.jpg" class="thumnail-image"> </a></p>
+<p><a href="./posts/2022-06-28-rspotify/index.html"> <img src="./posts/2022-06-28-rspotify/2022-06-28-rspotify.jpg" class="thumnail-image"> </a></p>
 </div>
 <div class="body">
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/2022-06-28-rspotify/index.html">
 <h3 class="no-anchor listing-title">
-Post With Code
+Tudo sobre o pacote {Rspotify}
 </h3>
 <div class="listing-subtitle">
-
+Obtendo informações dos seus artistas e músicas favoritas do Spotify
 </div>
 </a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
+<div class="listing-category" onclick="window.quartoListingCategory('Tutoriais'); return false;">
+Tutoriais
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
+<div class="listing-category" onclick="window.quartoListingCategory('Spotify'); return false;">
+Spotify
 </div>
 </div>
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/2022-06-28-rspotify/index.html">
 <div class="listing-description">
-This is a post with executable code.
+Olá! Quem me conhece sabe que sou um pouco viciada em música, e no contexto do R não poderia ser diferente! hahaha
 </div>
 </a>
 </div>
 <div class="metadata">
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/2022-06-28-rspotify/index.html">
 <div class="listing-date">
-Feb 6, 2023
+Jun 28, 2022
 </div>
 <div class="listing-author">
-Harlow Malloc
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="news" data-listing-date-sort="1675393200000" data-listing-file-modified-sort="1675723972334" data-listing-reading-time-sort="0.16">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <img src="./posts/welcome/thumbnail.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/welcome/index.html">
-<h3 class="no-anchor listing-title">
-Welcome To My Blog
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<a href="./posts/welcome/index.html">
-<div class="listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html">
-<div class="listing-date">
-Feb 3, 2023
-</div>
-<div class="listing-author">
-Tristan O’Malley
+Tereza
 </div>
 </a>
 </div>
