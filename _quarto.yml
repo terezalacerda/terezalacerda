@@ -4,14 +4,38 @@ project:
 website:
   title: "Tereza Lacerda"
   navbar:
+    background: "#ffc8cd"
+    foreground: "#ff4d5c"
+    logo: profile.jpg
+    search: true
     right:
-      - about.qmd
+      - text: "Sobre Mim"
+        menu:
+          - text: "Portfolio"
+            file: about.qmd
+      - text: "Posts"
+        file: about.qmd
+      - text: "Guia dos Musiqueiros"
+        file: about.qmd
+      - text: "Aplicativos"
+        file: about.qmd
+      - text: "Mais"
+        menu: 
+          - about.qmd
+          - about.qmd
       - icon: github
         href: https://github.com/terezalacerda
       - icon: twitter
         href: https://twitter.com/tereza_lacerda
+      - icon: spotify
+        href: https://open.spotify.com/user/therezzza
+      - icon: linkedin
+        href: https://www.linkedin.com/in/terezalacerda/
+      - icon: instagram
+        href: https://www.instagram.com/_cherry.py/
   page-footer:
     left: "Blog feito com [Quarto](https://quarto.org/)"
+    center: "Tereza Lacerda"
     right:
       - icon: github
         href: https://github.com/terezalacerda
