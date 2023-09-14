@@ -1,6 +1,6 @@
 ---
 title: "Tudo sobre o pacote {Rspotify}"
-subtitle: "Obtendo informações dos seus artistas e músicas favoritas do Spotify"
+description: "Obtendo informações dos seus artistas e músicas favoritas do Spotify"
 date: "2022-06-28"
 tags: ["tutoriais", "spotify", "música"]
 categories: ["Tutoriais", "Spotify"]
@@ -111,7 +111,6 @@ O funcionamento das funções está explicado na [documentação do pacote](http
 
 Para os exemplos, vou usar músicas e bandas brasileiras que gosto, então já fica aí a recomendação pra quem quiser! hahaha
 
-
 ### searchArtist
 
 A função `searchArtist` pede como argumentos o *nome do artista/banda*, e o *token* (aquele que acabamos de obter). Ela retorna um data frame no qual cada linha é referente a um artista (relacionado com a busca feita). O *id do artista* é especialmente importante, pois algumas funções desse pacote exigem o id como argumento, como veremos em seguida.
@@ -125,7 +124,6 @@ readr::read_rds("a1.rds") |>
   knitr::kable() |>
   kableExtra::kable_material(c("striped", "hover"))
 ```
-
 
 ### getRelated
 
@@ -316,7 +314,6 @@ readr::read_rds("a15.rds") |>
   knitr::kable() |>
   kableExtra::kable_material(c("striped", "hover"))
 ```
-
 
 ```{r echo=FALSE}
 knitr::include_graphics("https://media.giphy.com/media/olAik8MhYOB9K/giphy.gif")
