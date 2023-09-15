@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tereza">
+<meta name="dcterms.date" content="2021-12-23">
+<meta name="description" content="Aprenda a ter maior controle sobre a formatação de relatórios em Word gerados a partir do R Markdown">
+
+<title>Tereza Lacerda - Criando um relatório personalizado no Word através do R Markdown</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <img src="../../profile.jpg" alt="">
+    <span class="navbar-title">Tereza Lacerda</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Sobre Mim</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/terezalacerda"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/tereza_lacerda"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://open.spotify.com/user/therezzza"><i class="bi bi-spotify" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/terezalacerda/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/_cherry.py/"><i class="bi bi-instagram" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Criando um relatório personalizado no Word através do R Markdown</h1>
+                  <div>
+        <div class="description">
+          Aprenda a ter maior controle sobre a formatação de relatórios em Word gerados a partir do R Markdown
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">tutoriais</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Tereza </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 23, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Este tutorial é para você que quer usar o R Markdown para criar arquivos em Word e quer ter maior controle sobre a formatação desses documentos!</p>
+<p>É uma dica muito útil, pois você não terá mais que perder tempo formatando o seu relatório depois de escrevê-lo, ele já sairá estilizado e formatado do jeito que você quiser!</p>
+<p>Então, vamos ao tutorial:</p>
+<ol type="1">
+<li>Abra o <strong>RStudio</strong> e crie um arquivo <strong>R Markdown</strong>.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word001.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Selecione a opção <strong>Word</strong> como formato de saída.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word002.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>Salve o arquivo.</p></li>
+<li><p>Dê um <strong>Knit</strong>, apertando no botão do canto superior esquerdo (ou <strong>Knit to Word</strong>).</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word003.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Um arquivo Word aparecerá na sua tela, como esse:</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word004.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li><p>Agora, edite esse arquivo com a formatação que deseja ter em seu relatório!</p></li>
+<li><p>Clique no botão do canto inferior direito da aba <strong>Estilos</strong>. Deixe essa aba aberta.</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word005.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Clique em cima do título (“Untitled”, na imagem), e note que na aba <strong>Estilos</strong> a caixa <strong>Título</strong> será automaticamente selecionada.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word006.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="9" type="1">
+<li>Clique na seta à direita da caixa <strong>Título</strong>, e então, em <strong>Modificar</strong>.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word007.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="10" type="1">
+<li>Edite a formatação do jeito que preferir. No nosso exemplo, ficou assim:</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word008.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="11" type="1">
+<li><p>Quando terminar a edição, clique em <strong>Ok</strong> no canto inferior direito.</p></li>
+<li><p>Para editar outro elemento do texto, basta clicar em cima desse elemento, e a caixa do elemento será automaticamente selecionada na aba <strong>Estilos</strong>. (na imagem exemplo, clicamos no link “http://rmarkdown.rstudio.com” e na aba “Estilos” a caixa de <strong>Hiperlink</strong> foi automaticamente selecionada)</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word009.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="13" type="1">
+<li><p>Prossiga como anteriormente, clicando na seta à direita da caixa, e então, em <strong>Modificar</strong>.</p></li>
+<li><p>Quando a formatação estiver do jeito que você quiser, salve o arquivo. Aqui estamos usando o nome <strong>Template_1.docx</strong>. Feche o arquivo.</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word010.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="15" type="1">
+<li><p>Voltando ao RStudio, crie outro arquivo R Markdown, com <strong>Word</strong> como formato de saída.</p></li>
+<li><p>Escreva o seu relatório.</p></li>
+<li><p>Edite o começo do texto, especificando o seu arquivo de referência (sim, o arquivo que você acabou de editar!), ele deve ficar assim:</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word011.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="18" type="1">
+<li><p>Salve o arquivo.</p></li>
+<li><p>Dê um <strong>Knit</strong>, apertando no botão do canto superior esquerdo (ou <strong>Knit to Word</strong>).</p></li>
+<li><p>Prontinho! Aparecerá na tela o arquivo Word com o seu relatório personalizado como no arquivo de referência!</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="word012.webp" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Obs: Antes de apertar o botão <strong>Knit</strong>, certifique-se de que o arquivo Word está fechado. Se não, aparecerá um erro na tela do R.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Blog feito com <a href="https://quarto.org/">Quarto</a></div>   
+      <div class="nav-footer-center">Tereza Lacerda</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/terezalacerda">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/tereza_lacerda">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

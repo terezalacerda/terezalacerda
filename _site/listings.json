@@ -2,7 +2,13 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2022-06-28-rspotify/index.html"
+      "/posts/2022-06-28-rspotify/index.html",
+      "/posts/2022-05-05-skimr/index.html",
+      "/posts/2022-03-22-esquisse/index.html",
+      "/posts/2022-02-24-prettydoc/index.html",
+      "/posts/2021-12-27-clipr/index.html",
+      "/posts/2021-12-23-word-rmarkdown/index.html",
+      "/posts/2021-11-16-lubridate/index.html"
     ]
   }
 ]

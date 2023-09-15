@@ -3,7 +3,7 @@ title: "Tudo sobre o pacote {Rspotify}"
 description: "Obtendo informações dos seus artistas e músicas favoritas do Spotify"
 date: "2022-06-28"
 tags: ["tutoriais", "spotify", "música"]
-categories: ["Tutoriais", "Spotify"]
+categories: ["tutoriais", "Spotify"]
 image: "2022-06-28-rspotify.jpg"
 author: ["Tereza"]
 draft: false

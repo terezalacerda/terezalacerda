@@ -4,25 +4,11 @@ project:
 website:
   title: "Tereza Lacerda"
   navbar:
-    background: "#ffc8cd"
-    foreground: "#ff4d5c"
-    logo: profile.jpg
+    background: primary
     search: true
     right:
       - text: "Sobre Mim"
-        menu:
-          - text: "Portfolio"
-            file: about.qmd
-      - text: "Posts"
         file: about.qmd
-      - text: "Guia dos Musiqueiros"
-        file: about.qmd
-      - text: "Aplicativos"
-        file: about.qmd
-      - text: "Mais"
-        menu: 
-          - about.qmd
-          - about.qmd
       - icon: github
         href: https://github.com/terezalacerda
       - icon: twitter

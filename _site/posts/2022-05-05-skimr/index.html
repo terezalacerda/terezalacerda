@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tereza">
+<meta name="dcterms.date" content="2022-05-05">
+<meta name="description" content="Uma ótima ferramenta para usar em suas análises exploratórias">
+
+<title>Tereza Lacerda - Conheça o pacote {skimr}</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <img src="../../profile.jpg" alt="">
+    <span class="navbar-title">Tereza Lacerda</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Sobre Mim</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/terezalacerda"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/tereza_lacerda"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://open.spotify.com/user/therezzza"><i class="bi bi-spotify" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/terezalacerda/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/_cherry.py/"><i class="bi bi-instagram" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Conheça o pacote {skimr}</h1>
+                  <div>
+        <div class="description">
+          Uma ótima ferramenta para usar em suas análises exploratórias
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">tutoriais</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Tereza </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 5, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Você já conhece o skimr?</p>
+<p>O <a href="https://cran.r-project.org/web/packages/skimr/index.html">skimr</a> é um pacote que nos fornece medidas resumo de variáveis de uma base de dados de interesse. Ele pode ser visto como uma alternativa mais completa para a função summary() do R Base.</p>
+<p>Além de incluir algumas informações a mais sobre cada coluna (como número de missings, por exemplo), ele lida com todos os tipos de dados, não só numéricos, fornecendo um conjunto diferente de medidas resumo a depender do tipo da coluna.</p>
+<p>Gostou? Vamos dar uma olhada em como ele funciona!</p>
+<section id="skimr" class="level2">
+<h2 class="anchored" data-anchor-id="skimr">skimr</h2>
+<p>Primeiramente, vamos instalar e carregar o pacote skimr</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"skimr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora, vamos aplicar a função <code>skim</code> em uma base de dados de interesse. No caso, estamos usando a base <code>dados_starwars</code> do pacote <code>dados</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">::</span>dados_starwars <span class="sc">|&gt;</span> <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">dados::dados_starwars</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">list</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">nome</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">87</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cor_do_cabelo</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cor_da_pele</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cor_dos_olhos</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sexo_biologico</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">genero</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">planeta_natal</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">especie</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: list</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">min_length</th>
+<th style="text-align: right;">max_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">filmes</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">veiculos</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">naves_espaciais</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">altura</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">174.36</td>
+<td style="text-align: right;">34.77</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">167.0</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">191.0</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: left;">▁▁▇▅▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">massa</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">97.31</td>
+<td style="text-align: right;">169.46</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">55.6</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">84.5</td>
+<td style="text-align: right;">1358</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ano_nascimento</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">87.57</td>
+<td style="text-align: right;">154.69</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">35.0</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">72.0</td>
+<td style="text-align: right;">896</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Veja que a saída da função <code>skim</code> mostra uma visão geral da base de dados, nos dando informações como número de linhas, número de colunas, e os tipos das colunas.</p>
+<p>Ela fornece também informações individuais sobre cada coluna da base, separando as colunas por tipo: cada tipo nos dá um conjunto diferente de estatísticas, que façam sentido para aquele tipo de dado.</p>
+<p>Além disso, se salvarmos a saída da função em um objeto, podemos obter um data frame no qual cada linha é referente a uma coluna da base de dados.</p>
+<p>Isso é muito útil quando estamos lidando com bases que tem muitas colunas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>info_skim <span class="ot">&lt;-</span> dados<span class="sc">::</span>dados_starwars <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Podemos, por exemplo, ordenar pelas variáveis que tem maior número de NA:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>info_skim <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(n_missing))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 20
+   skim_type skim_variable   n_missing complete_rate character.min character.max
+   &lt;chr&gt;     &lt;chr&gt;               &lt;int&gt;         &lt;dbl&gt;         &lt;int&gt;         &lt;int&gt;
+ 1 numeric   ano_nascimento         44         0.494            NA            NA
+ 2 numeric   massa                  28         0.678            NA            NA
+ 3 character planeta_natal          10         0.885             4            14
+ 4 numeric   altura                  6         0.931            NA            NA
+ 5 character cor_do_cabelo           5         0.943             5            20
+ 6 character sexo_biologico          4         0.954             5            12
+ 7 character genero                  4         0.954             8             9
+ 8 character especie                 4         0.954             3            15
+ 9 character nome                    0         1                 3            21
+10 character cor_da_pele             0         1                 4            28
+11 character cor_dos_olhos           0         1                 4            19
+12 list      filmes                  0         1                NA            NA
+13 list      veiculos                0         1                NA            NA
+14 list      naves_espaciais         0         1                NA            NA
+# ℹ 14 more variables: character.empty &lt;int&gt;, character.n_unique &lt;int&gt;,
+#   character.whitespace &lt;int&gt;, list.n_unique &lt;int&gt;, list.min_length &lt;int&gt;,
+#   list.max_length &lt;int&gt;, numeric.mean &lt;dbl&gt;, numeric.sd &lt;dbl&gt;,
+#   numeric.p0 &lt;dbl&gt;, numeric.p25 &lt;dbl&gt;, numeric.p50 &lt;dbl&gt;, numeric.p75 &lt;dbl&gt;,
+#   numeric.p100 &lt;dbl&gt;, numeric.hist &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Você pode ler mais sobre as funcionalidades do skimr <a href="https://cran.r-project.org/web/packages/skimr/vignettes/skimr.html">nesse vignette</a></p>
+<hr>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Blog feito com <a href="https://quarto.org/">Quarto</a></div>   
+      <div class="nav-footer-center">Tereza Lacerda</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/terezalacerda">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/tereza_lacerda">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
