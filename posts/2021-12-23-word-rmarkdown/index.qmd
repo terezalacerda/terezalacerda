@@ -15,47 +15,47 @@ Este tutorial é para você que quer usar o R Markdown para criar arquivos em Wo
 
 Então, vamos ao tutorial:
 
-1. Abra o **RStudio** e crie um arquivo **R Markdown**.
+1.  Abra o **RStudio** e crie um arquivo **R Markdown**.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("word001.webp")
 ```
 
-2. Selecione a opção **Word** como formato de saída.
+2.  Selecione a opção **Word** como formato de saída.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("word002.webp")
 ```
 
-3. Salve o arquivo.
+3.  Salve o arquivo.
 
-4. Dê um **Knit**, apertando no botão do canto superior esquerdo (ou **Knit to Word**).
+4.  Dê um **Knit**, apertando no botão do canto superior esquerdo (ou **Knit to Word**).
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("word003.webp")
 ```
 
-5. Um arquivo Word aparecerá na sua tela, como esse:
+5.  Um arquivo Word aparecerá na sua tela, como esse:
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("word004.webp")
 ```
 
-6. Agora, edite esse arquivo com a formatação que deseja ter em seu relatório!
+6.  Agora, edite esse arquivo com a formatação que deseja ter em seu relatório!
 
-7. Clique no botão do canto inferior direito da aba **Estilos**. Deixe essa aba aberta.
+7.  Clique no botão do canto inferior direito da aba **Estilos**. Deixe essa aba aberta.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("word005.webp")
 ```
 
-8. Clique em cima do título ("Untitled", na imagem), e note que na aba **Estilos** a caixa **Título** será automaticamente selecionada.
+8.  Clique em cima do título ("Untitled", na imagem), e note que na aba **Estilos** a caixa **Título** será automaticamente selecionada.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("word006.webp")
 ```
 
-9. Clique na seta à direita da caixa **Título**, e então, em **Modificar**.
+9.  Clique na seta à direita da caixa **Título**, e então, em **Modificar**.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("word007.webp")

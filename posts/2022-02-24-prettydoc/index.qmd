@@ -13,43 +13,43 @@ O [prettydoc](https://prettydoc.statr.me/) é um pacote que oferece alguns templ
 
 Então, vamos lá:
 
-1. Instale o pacote {prettydoc}:
+1.  Instale o pacote {prettydoc}:
 
 ```{r eval=FALSE}
 install.packages("prettydoc")
 ```
 
-2. Crie um arquivo **R Markdown**.
+2.  Crie um arquivo **R Markdown**.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("prettydoc001.webp")
 ```
 
-3. Selecione a opção **HTML** como formato de saída, e então, clique em **From Template**.
+3.  Selecione a opção **HTML** como formato de saída, e então, clique em **From Template**.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("prettydoc002.webp")
 ```
 
-4. Selecione a opção **Lightweight and Pretty Document (HTML)** e então, clique em **OK**.
+4.  Selecione a opção **Lightweight and Pretty Document (HTML)** e então, clique em **OK**.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("prettydoc003.webp")
 ```
 
-5. Um documento R Markdown como esse será criado:
+5.  Um documento R Markdown como esse será criado:
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("prettydoc004.webp")
 ```
 
-O importante aqui é o cabeçalho YAML (parte destacada na imagem), ele que vai garantir a personalização do seu relatório. 
+O importante aqui é o cabeçalho YAML (parte destacada na imagem), ele que vai garantir a personalização do seu relatório.
 
 Podemos ver na imagem que existe um campo chamado **theme**, e é nele que vamos especificar qual template queremos usar no nosso relatório!
 
-O prettydoc possui 5 templates, são eles: `cayman`, `tactile`, `architect`, `leonids`, `hpstr`. Para alterar o template, basta modificar o nome no campo **"theme: "**. Podemos ver que o template default é o `architect`.
+O prettydoc possui 5 templates, são eles: `cayman`, `tactile`, `architect`, `leonids`, `hpstr`. Para alterar o template, basta modificar o nome no campo **"theme:"**. Podemos ver que o template default é o `architect`.
 
-6. Para visualizar cada template, basta colocar o respectivo nome no campo **"theme: "**, e apertar o botão **Knit**.
+6.  Para visualizar cada template, basta colocar o respectivo nome no campo **"theme:"**, e apertar o botão **Knit**.
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("prettydoc005.webp")
@@ -87,10 +87,9 @@ knitr::include_graphics("prettydoc009.webp")
 knitr::include_graphics("prettydoc010.webp")
 ```
 
-
 Você pode ver mais sobre os templates [nessa página](https://prettydoc.statr.me/themes.html)
 
-7. Se você já tem algum relatório em R Markdown e quer personalizá-lo, basta substituir o cabeçalho do seu relatório pelo cabeçalho que foi gerado no passo 4 (pelo prettydoc)
+7.  Se você já tem algum relatório em R Markdown e quer personalizá-lo, basta substituir o cabeçalho do seu relatório pelo cabeçalho que foi gerado no passo 4 (pelo prettydoc)
 
 Por exemplo, temos aqui esse relatório com a saída HTML:
 
@@ -117,4 +116,5 @@ E voilà, ao *Knitar* esse documento, o seguinte HTML é gerado:
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("prettydoc014.webp")
 ```
----
+
+------------------------------------------------------------------------

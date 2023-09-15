@@ -21,7 +21,6 @@ website:
         href: https://www.instagram.com/_cherry.py/
   page-footer:
     left: "Blog feito com [Quarto](https://quarto.org/)"
-    center: "Tereza Lacerda"
     right:
       - icon: github
         href: https://github.com/terezalacerda

@@ -17,7 +17,7 @@ Nesse post, vamos mostrar **como copiar tabelas do R para o Excel**, e **como co
 
 ## Copiando tabelas do R para o Excel através da área de transferência
 
-1. Carregue o pacote `clipr`
+1.  Carregue o pacote `clipr`
 
 ```{r message=FALSE, warning=FALSE}
 library(clipr)
@@ -27,14 +27,13 @@ library(clipr)
 CLIPR_ALLOW = TRUE
 ```
 
-
-2. Agora, basta usar a tabela escolhida como argumento da função `write_clip`. No nosso caso, queremos copiar a tabela `mtcars`
+2.  Agora, basta usar a tabela escolhida como argumento da função `write_clip`. No nosso caso, queremos copiar a tabela `mtcars`
 
 ```{r eval=FALSE}
 write_clip(mtcars)
 ```
 
-3. Abra um novo arquivo excel, use o atalho **crtl + v** e voilà!
+3.  Abra um novo arquivo excel, use o atalho **crtl + v** e voilà!
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("clipr1.webp")
@@ -74,19 +73,19 @@ knitr::include_graphics("clipr3.webp")
 
 ## Copiando tabelas do Excel para o R através da área de transferência
 
-1. Carregue o pacote `clipr`
+1.  Carregue o pacote `clipr`
 
 ```{r message=FALSE, warning=FALSE}
 library(clipr)
 ```
 
-2. No excel, selecione a tabela desejada, e a copie através do comando **ctrl + c**. No nosso caso, estamos copiando a base `mtcars` (no formato **.xlsx**)
+2.  No excel, selecione a tabela desejada, e a copie através do comando **ctrl + c**. No nosso caso, estamos copiando a base `mtcars` (no formato **.xlsx**)
 
 ```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("clipr4.webp")
 ```
 
-3. Agora, vá até o R e use o seguinte comando:
+3.  Agora, vá até o R e use o seguinte comando:
 
 ```{r, eval=FALSE}
 base_de_dados <- read_clip_tbl()
@@ -100,7 +99,6 @@ E prontinho! Vamos visualizar o objeto `base_de_dados`:
 base_de_dados <- mtcars
 row.names(base_de_dados) <- 1:32
 ```
-
 
 ```{r}
 base_de_dados[1:11, ]

@@ -32,7 +32,7 @@ dmy("20/11/2021")
 
 Obs: note que o padrão do R para um objeto da classe `Date` é y/m/d (**y**ear, **m**onth, **d**ay)
 
-Trocando dia e mês de lugar na data anterior, obtemos: **11/20/2021**. 
+Trocando dia e mês de lugar na data anterior, obtemos: **11/20/2021**.
 
 Para converter para a classe `Date`, identificamos que a ordem de entrada é: **mês, dia, ano** (padrão americano)
 
@@ -48,7 +48,6 @@ Seguindo essa intuição:
 ydm("2021/20/11")
 ```
 
-
 Além disso, a função aceita diversos padrões de entrada, vejamos:
 
 ```{r}
@@ -58,7 +57,6 @@ dmy("20-11-2021")
 dmy("20.11.2021")
 ```
 
-
 ### Incluindo horas, minutos e segundos
 
 Suponha que queremos criar um objeto com a seguinte informação: **20/11/2021 16:34:29**. Basta usar a função `dmy_hms`:
@@ -67,7 +65,6 @@ Suponha que queremos criar um objeto com a seguinte informação: **20/11/2021 1
 dmy_hms("20/11/2021 16:34:29")
 dmy_hms("20112021163429")
 ```
-
 
 ### Os operadores %m+% e %m-%
 
@@ -85,16 +82,13 @@ Por exemplo, para somar um mês em alguma data, fazemos:
 data %m+% months(1)
 ```
 
-
 Note que a função não excedeu o último dia do mês, ela retornou o último dia do mês seguinte.
 
-
 Podemos somar mais de um mês por vez, obtendo:
-  
+
 ```{r}
 data %m+% months(1:12)
 ```
-
 
 A expressão `Date %m+% months(n)` sempre retorna uma data do n-ésimo mês seguinte à data do objeto `Date`
 
@@ -103,7 +97,6 @@ Subtraindo um dia:
 ```{r}
 data %m+% months(1:12) %m-% days(1)
 ```
-
 
 Outro exemplo:
 
